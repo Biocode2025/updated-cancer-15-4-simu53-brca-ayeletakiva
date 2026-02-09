@@ -138,3 +138,31 @@ if gene_occ == "yes":
   years = av_days/365
   print("For a female that does have BRCA1,2 Mutation: \nThe mutation that will change the P53 protein will take in average %d years." %(years))
   
+#במקרה ואין בכלל מוטציה
+elif gene_occ == "no":
+  for i in range(times):
+    m_p53 = p53
+    day_count = 0
+    diff = 0
+    while diff <= 1:
+      day_count += 1
+      chance_mut = random.randint(1,10000)
+      if chance_mut == 10000:
+        chance = random.randint(1,100)
+        if chance <= 98:
+          m_p53 = Mutate_DNA(m_p53)
+        elif chance == 99:
+          m_p53 = Delete_DNA(m_p53)
+        elif chance == 100:
+          m_p53 = Insert_DNA(m_p53)
+        mut_RNA = DNA_RNA_Cod(m_p53)
+        mut_prot = RNA_prot(mut_RNA)
+        diff = Comp_seq(og_prot, mut_prot)
+        if diff == 2:
+          break
+      else:
+        continue
+    tot_day_count += day_count
+  av_days = tot_day_count/times
+  years = av_days/365
+  print("For a female that does have BRCA1,2 Mutation: \nThe mutation that will change the P53 protein will take in average %d years." %(years))
