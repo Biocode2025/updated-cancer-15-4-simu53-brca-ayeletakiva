@@ -21,6 +21,20 @@ def Read_dict():
     RNA_codon_table[codon] = AA
   file.close()
 
+#פונקציה המקבלת רצף רנ"א ומתרגמת אותו לחומצות האמיניות מהן הוא מורכב
+def RNA_prot(RNA):
+  AA_protein = ""
+  for i in range(0, len(RNA), 3):
+    codon = RNA[i:i+3]
+    if len(codon) == 3:
+      if codon in RNA_codon_table:
+        if RNA_codon_table[codon] == "*":
+          AA_protein += (RNA_codon_table[codon])
+          break
+        else:
+          AA_protein += (RNA_codon_table[codon])
+  return AA_protein
+
 ### main program ###
 
 gene_occ = input("Does the Female has a BRCA1,2 mutation? (Y=Yes, N=No)")
