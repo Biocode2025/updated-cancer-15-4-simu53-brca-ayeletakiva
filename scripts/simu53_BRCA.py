@@ -86,6 +86,11 @@ def Comp_seq(old,new):
   return diff
 
 ### main program ###
+
+#יצירת מילון הקודונים
+RNA_codon_table = {}
+Read_dict()
+
 gene_occ = input("Does the Female has a BRCA1,2 mutation? (Y=Yes, N=No)")
 
 if gene_occ == "yes":
