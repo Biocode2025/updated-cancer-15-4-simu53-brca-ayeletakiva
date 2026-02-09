@@ -73,6 +73,18 @@ def Insert_DNA(seq):
   mut_seq = seq[0:rand_base] + new_bases + seq[rand_base:]
   return mut_seq
 
+#פונקציה המשווה ובודקת כמה הבדלים יש בין שני רצפים ומחזירה את מספר ההבדלים הקיימים ביניהם
+def Comp_seq(old,new):
+  diff = 0
+  min_length = min(len(old), len(new))
+  for i in range(min_length):
+    if old[i] != new[i]:
+      diff += 1
+    else:
+      continue
+  diff += abs(len(old) - len(new))
+  return diff
+
 ### main program ###
 gene_occ = input("Does the Female has a BRCA1,2 mutation? (Y=Yes, N=No)")
 
