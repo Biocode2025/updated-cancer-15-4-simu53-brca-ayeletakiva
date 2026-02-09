@@ -61,6 +61,18 @@ def Delete_DNA(seq):
   mut_seq = seq[0:rand_base] + seq[rand_base+nuc_amount:]
   return mut_seq
 
+#פונקציה המכניסה במיקום אקראי לרצף נוקלאוטיד אחד עד שלושה נוספים
+def Insert_DNA(seq):
+  base_list = ["A", "T", "C", "G"]
+  rand_base = random.randrange(0,len(seq))
+  nuc_amount = random.randrange(1,4)
+  new_bases = ""
+  for i in range(nuc_amount):
+    new_base = random.choice(base_list)
+    new_bases += new_base
+  mut_seq = seq[0:rand_base] + new_bases + seq[rand_base:]
+  return mut_seq
+
 ### main program ###
 gene_occ = input("Does the Female has a BRCA1,2 mutation? (Y=Yes, N=No)")
 
