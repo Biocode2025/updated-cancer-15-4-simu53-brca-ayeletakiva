@@ -1,3 +1,6 @@
+#functions:
+import random
+
 #פונקציה המקבלת קובץ דנ"א והופכת אותו לרצף רנ"א
 def DNA_RNA_Cod(DNA):
   delimiter = ""
@@ -34,6 +37,22 @@ def RNA_prot(RNA):
         else:
           AA_protein += (RNA_codon_table[codon])
   return AA_protein
+
+#פונקציה המקבלת את רצף הנגיף, בוחרת מיקום אקראי ברצף ומחליפה בו את הנוקלאוטיד באופן רנדומלי, מחזירה את רצף הגנום עם המוטציה
+def Mutate_DNA(seq):
+  base_list = ["A", "T", "C", "G"]
+  rand_base = random.randrange(0,len(seq))
+  if seq[rand_base] == "A":
+    base_list.remove("A")
+  elif seq[rand_base] == "T":
+    base_list.remove("T")
+  elif seq[rand_base] == "C":
+    base_list.remove("C")
+  elif seq[rand_base] == "G":
+    base_list.remove("G")
+  new_base = random.choice(base_list)
+  mut_seq = seq[0:rand_base] + new_base + seq[rand_base+1:]
+  return mut_seq
 
 ### main program ###
 
