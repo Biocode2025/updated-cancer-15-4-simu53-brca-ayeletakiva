@@ -38,7 +38,7 @@ def RNA_prot(RNA):
           AA_protein += (RNA_codon_table[codon])
   return AA_protein
 
-#פונקציה המקבלת את רצף הנגיף, בוחרת מיקום אקראי ברצף ומחליפה בו את הנוקלאוטיד באופן רנדומלי, מחזירה את רצף הגנום עם המוטציה
+#פונקציה המקבלת את רצף הדנ"א, בוחרת מיקום אקראי ברצף ומחליפה בו את הנוקלאוטיד באופן רנדומלי, מחזירה את רצף הגנום עם המוטציה
 def Mutate_DNA(seq):
   base_list = ["A", "T", "C", "G"]
   rand_base = random.randrange(0,len(seq))
@@ -91,8 +91,17 @@ def Comp_seq(old,new):
 RNA_codon_table = {}
 Read_dict()
 
+#הכנסת הקובץ לשורת סטרינג אחת
+file = open("data/human_p53_coding.txt")
+p53 = ""
+for line in file:
+  if line[0] == ">":
+    continue
+  else:
+    line = line.upper()
+    line = line.rstrip("\r\n")
+    p53 += line
+
+times = 1000
 gene_occ = input("Does the Female has a BRCA1,2 mutation? (Y=Yes, N=No)")
 
-if gene_occ == "yes":
-    print("For a female that does have BRCA1,2 Mutation: \nThe mutation that will change the P53 protein will take in average XX years.")
-    
